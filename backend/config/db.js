@@ -1,3 +1,5 @@
+// db.js:          # database connection logic
+
 import mongoose from "mongoose";
 
 export const connectDB = async () => {
