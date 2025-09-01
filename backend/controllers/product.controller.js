@@ -41,7 +41,13 @@ const updateProduct = async (req, res) => {
     });
     if (!updatedProduct) return res.status(404).json("Product was not found");
 
-    res.status(200).json({ success: true, data: updatedProduct });
+    res
+      .status(200)
+      .json({
+        success: true,
+        data: updatedProduct,
+        message: "Product updated successfully",
+      });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: "Internal Server Error" });
@@ -59,7 +65,7 @@ const deleteProduct = async (req, res) => {
       return res
         .status(404)
         .json({ success: false, message: "Product was not found" });
-    res.status(204).json({ success: true, message: "Product deleted" }); // 204: No Content
+    res.status(200).json({ success: true, message: "Product deleted" }); // 204: No Content
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: "Internal server error" });
