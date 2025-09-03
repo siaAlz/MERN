@@ -13,13 +13,17 @@ app.use(express.json());
 
 app.use("/api/products", productRoute);
 
+// handle 404 for api routes
+app.use("/api", (req, res) => {
+  res.status(404).json({ message: "API route not found" });
+});
+
 // Configuration for deployment
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "frontend", "dist")));
   app.get("/*splat", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
-  console.log("Hellllo world");
 }
 
 const startServer = async () => {
