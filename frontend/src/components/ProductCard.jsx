@@ -33,7 +33,6 @@ function ProductCard({ product }) {
 
   const handleDeleteProduct = async (pid) => {
     const { success, message } = await deleteProduct(pid);
-    console.log(success, message);
     if (success) {
       toast({
         description: message,
